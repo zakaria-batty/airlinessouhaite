@@ -1,0 +1,90 @@
+<%- include('partials/header.ejs') %>
+    <section class="banner" id="top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="left-side">
+                        <div class="logo">
+                            <img src="img/logo.png" alt="airlensyoussoufia">
+                        </div>
+                        <div class="tabs-content">
+                            <h4>Choose Your Direction:</h4>
+                            <ul class="social-links">
+                                <li><a href="http://facebook.com">Find us on <em>Facebook</em><i
+                                            class="fa fa-facebook"></i></a></li>
+                                <li><a href="http://youtube.com">Our <em>YouTube</em> Channel<i
+                                            class="fa fa-youtube"></i></a></li>
+                                <li><a href="http://instagram.com">Follow our <em>instagram</em><i
+                                            class="fa fa-instagram"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="page-direction-button">
+                            <a href="/signIn"><i class="fa fa-user"></i>Sign-in</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5 col-md-offset-1">
+                    <section id="first-tab-group" class="tabgroup">
+                        <div id="tab1">
+                            <div class="submit-form">
+                                <h4>Check availability for <em>direction</em>:</h4>
+                                <form id="form-submit" action="/api/search" method="POST">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <fieldset>
+                                                <label for="from">From:</label>
+                                                <select required name='from'>
+                                                    <option value="">Select a location...</option>
+                                                    <% vols.forEach(vol=>{ %>
+                                                        <option value="<%= vol.villDepart %>">
+                                                            <%= vol.villDepart %>
+                                                        </option>
+                                                        <% }) %>
+                                                </select>
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <fieldset>
+                                                <label for="to">To:</label>
+                                                <select required name='to'>
+                                                    <option value="">Select a location...</option>
+                                                    <% vols.forEach(vol=>{ %>
+                                                        <option value="<%= vol.villeDarrive %>">
+                                                            <%= vol.villeDarrive %>
+                                                        </option>
+                                                        <% }) %>
+                                                </select>
+                                            </fieldset>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <fieldset>
+                                                <label for="departure">Departure date:</label>
+                                                <input name="deparure" type="text" class="form-control date"
+                                                    id="deparure" placeholder="Select date..." required="">
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <fieldset>
+                                                <label for="return">Return date:</label>
+                                                <input name="dereturn" type="text" class="form-control date" id="return"
+                                                    placeholder="Select date..." required="">
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <fieldset>
+                                                <button type="submit" id="form-submit" class="btn">Order Ticket
+                                                    Now</button>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <%- include('partials/footer.ejs') %>
