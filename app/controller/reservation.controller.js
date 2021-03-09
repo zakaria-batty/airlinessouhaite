@@ -1,7 +1,7 @@
 const db = require('../config/db.config.js');
 const reservSchema = db.reservationSchema;
 
-// Post a Customer
+// Post reservation
 exports.insertres = async (req, res) => {
   reservSchema
     .create({
